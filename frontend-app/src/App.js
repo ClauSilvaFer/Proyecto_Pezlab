@@ -4,25 +4,18 @@ import {
 } from "react-router-dom";
 
 import './App.css';
-import LoginPage from "./pages/login";
-import MovieIndexPage from "./pages/movies";
-import CreateMoviePage from "./pages/movies/create";
-import MovieReviewPage from "./pages/reviews/movie_review";
-import CreateReviewPage from "./pages/reviews/create"
+import ProductoCreatePage from "./pages/Producto/create";
+import ProductoPage from "./pages/Producto";
+
 
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/movies/" element={
-                        <MovieIndexPage/>
-                }
-                />
-                <Route path="/movies/create/" element={ <CreateMoviePage/>}/>
-                <Route path="/movies/:id/reviews/" element={ <MovieReviewPage/>}/>
-                <Route path="/movies/:id/reviews/create"
-                       element={ <CreateReviewPage/>}/>
+                <Route path="/producto/create/" element={ <ProductoCreatePage/>}/>
+                <Route path="/productos" element={ <ProductoPage/>}/>
+                    
             </Routes>
         </Router>
 

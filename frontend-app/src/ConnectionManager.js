@@ -7,7 +7,7 @@ export default class ConnectionManager {
     });
 
     getMovies = async () => {
-        let response = await this.baseRequest.get('/movies');
+        let response = await this.baseRequest.get('/productos');
 
         if (response.status !== 200)
             return null;
@@ -23,28 +23,17 @@ export default class ConnectionManager {
 
     }
 
-    createMovie = async (title, rating, review, yourName) => {
-        let response = await this.baseRequest.post(`/movie/create`,{title, rating, review, yourName});
+    createProducto = async (name, price, image, description, stock, size, color, type) => {
+        let response = await this.baseRequest.post(`/producto/create`,{name, price, image, description, stock, size, color, type});
+        console.log("dwrt456435t", response)
 
-        if (response.status !== 200)
-            return null;
-        return response.data;
+        if (response.status === 200 || response.status === 201)
+            return response.data;
+        return null;
 
     }
 
-    getReviews = async (idMovie) => {
-        let response = await this.baseRequest.get(`/reviews/${idMovie}`);
+    
 
-        if (response.status !== 200)
-            return null;
-        return response.data;
-    }
-
-    createReview = async (idMovie, rating, review, yourName) => {
-        let response = await this.baseRequest.post(`/review/create`,{rating, review, yourName, idMovie });
-
-        if (response.status !== 200)
-            return null;
-        return response.data;
-    }
+    
 }

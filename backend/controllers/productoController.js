@@ -8,7 +8,7 @@ const createProducto = async (req, res) => {
 
 
 const getProductos = async (req, res) => {
-    var listProductos = await Productos.find();
+    var listProductos = await Producto.find();
     res.status(200).json(listProductos);
 }
 
