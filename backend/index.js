@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const router = require("./routes/productoRoute.js");
+const routerUser = require("./routes/usuarioRoute.js");
 
 
 
@@ -14,6 +15,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/directory")
 
 app.use(express.json());
 app.use(router);
+app.use(routerUser);
 
 
 app.listen(8080);
