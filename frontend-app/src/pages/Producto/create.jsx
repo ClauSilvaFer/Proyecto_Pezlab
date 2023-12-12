@@ -227,7 +227,7 @@ class CreateProductoPage extends React.Component {
                   </div>
                   <div className="form-group mt-4">
                     <label htmlFor="image">
-                      <h6>URL de la imagen</h6>
+                      <h6>Imagen</h6>
                     </label>
                     <input
                       className="form-control"
@@ -283,7 +283,7 @@ class CreateProductoPage extends React.Component {
                     <label htmlFor="size">
                       <h6>Tamaño</h6>
                     </label>
-                    <input
+                    <select
                       className="form-control"
                       type="text"
                       name="size"
@@ -295,13 +295,13 @@ class CreateProductoPage extends React.Component {
                           size: event.target.value,
                         });
                       }}
-                    />
+                      ><option>Pequeño</option><option>Mediano</option><option>Grande</option></select>
                   </div>
                   <div className="form-group mt-4">
                     <label htmlFor="color">
                       <h6>Color</h6>
                     </label>
-                    <input
+                    <select
                       className="form-control"
                       type="text"
                       name="color"
@@ -313,13 +313,13 @@ class CreateProductoPage extends React.Component {
                           color: event.target.value,
                         });
                       }}
-                    />
+                      ><option>Gris y negro</option><option>Rojo</option><option>Azul</option></select>
                   </div>
                   <div className="form-group mt-4">
                     <label htmlFor="type">
                       <h6>Tipo</h6>
                     </label>
-                    <input
+                    <select
                       className="form-control"
                       type="text"
                       name="type"
@@ -331,7 +331,7 @@ class CreateProductoPage extends React.Component {
                           type: event.target.value,
                         });
                       }}
-                    />
+                    ><option>Unisex</option><option>Femenino</option><option>Masculino</option></select>
                   </div>
                   <button
                     className="btn btn-primary mr-2 mt-3"
