@@ -1,11 +1,11 @@
 import React from "react";
-import TableComponent from "../../components/TableComponent";
-import { withRouter } from "../../utils";
-import ConnectionManager from "../../ConnectionManager";
+import TableComponent from "../components/TableComponent";
+import { withRouter } from "../utils";
+import ConnectionManager from "../ConnectionManager";
 import SweetAlert from "react-bootstrap-sweetalert";
-import HeaderComponent from "../../components/HeaderComponent";
+import HeaderComponent from "../components/HeaderComponent";
 
-class MovieIndexPage extends React.Component {
+class UsuarioIndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,22 +15,22 @@ class MovieIndexPage extends React.Component {
     };
   }
 
-  createMovie = () => {
-    this.props.navigate("/admin/producto/create/");
+  createUsuario = () => {
+    this.props.navigate("/admin/usuario/create/");
   };
 
-  editProduct = (movieId) => {
-    this.props.navigate(`/admin/producto/edit/${movieId}`);
+  editUsuario = (usuarioId) => {
+    this.props.navigate(`/admin/usuario/edit/${usuarioId}`);
   };
 
-  deleteProduct = async (movieId) => {
+  deleteUsuario = async (usuarioId) => {
     let connection = new ConnectionManager();
-    const isOk = await connection.deleteProducto(movieId);
+    const isOk = await connection.deleteUsuario(usuarioId);
     if (isOk) {
-      let newData = this.state.data.filter((d) => d._id !== movieId);
+      let newData = this.state.data.filter((d) => d._id !== usuarioId);
       this.setState({
         error: "",
-        success: "Producto Eliminado",
+        success: "Usuario Eliminado",
         data: newData,
       });
     }
@@ -38,7 +38,7 @@ class MovieIndexPage extends React.Component {
 
   async componentDidMount() {
     let connection = new ConnectionManager();
-    let response = await connection.getMovies();
+    let response = await connection.getUsuarios();
     if (response) {
       this.setState({ error: "", success: "", data: response });
     } else {
@@ -74,7 +74,7 @@ class MovieIndexPage extends React.Component {
             success
             onConfirm={() => {
               this.onCloseModal();
-              this.props.navigate("/admin/productos");
+              this.props.navigate("/admin/usuarios");
             }}
           >
             {this.state.success}
@@ -85,12 +85,12 @@ class MovieIndexPage extends React.Component {
             <div className="col-12">
               <div className="row justify-content-between">
                 <div className="col col-4">
-                  <h2 className="mb-5">Administrador de Productos</h2>
+                  <h2 className="mb-5">Administrador de Usuarios</h2>
                 </div>
                 <div className="col col-1">
                   <button
                     className="btn btn-success"
-                    onClick={this.createMovie}
+                    onClick={this.createUsuario}
                   >
                     Crear
                   </button>
@@ -98,10 +98,10 @@ class MovieIndexPage extends React.Component {
               </div>
               <div className="row">
                 <TableComponent
-                  keys={["name", "stock"]}
+                  keys={["user", "name"]}
                   data={proccessData}
                   actions={["Editar", "Eliminar"]}
-                  actionsHandler={[this.editProduct, this.deleteProduct]}
+                  actionsHandler={[this.editUsuario, this.deleteUsuario]}
                 />
               </div>
             </div>
@@ -112,4 +112,4 @@ class MovieIndexPage extends React.Component {
   };
 }
 
-export default MovieIndexPage = withRouter(MovieIndexPage);
+export default UsuarioIndexPage = withRouter(UsuarioIndexPage);

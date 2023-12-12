@@ -10,16 +10,27 @@ export default function HeaderComponent() {
     navigate("/admin/login");
   };
 
+  const paginaMedia = () => {
+    navigate("/admin/paginamedia");
+  };
+
   return (
     <div className="d-flex justify-content-between m-4 mb-5">
       <div className="col col-4" style={{ marginLeft: "20px" }}>
-        <h2>Administrador</h2>
-      </div>
+        <h2>PEZLAB</h2>
+      </div>  
+      
       {isAuth ? (
-        <button className="btn btn-danger" onClick={logout}>
+        <div>
+        <button className="btn btn-success" onClick={paginaMedia}>
+        Administrador
+      </button>
+        <button className="btn btn-danger" style={{ marginLeft: "20px" }} onClick={logout}>
           Salir
         </button>
-      ) : null}
+        </div>
+        ) : null}
+      
     </div>
   );
 }
