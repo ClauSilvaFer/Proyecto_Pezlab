@@ -93,15 +93,11 @@ export default class ConnectionManager {
     return response.data;
   };
 
-  createUsuario = async (
-    user,
-    password,
-    name
-  ) => {
+  createUsuario = async (user, password, name) => {
     let response = await this.baseRequest.post(`/usuario/create`, {
     user,
     password,
-    name
+    name,
     });
 
     if (response.status === 200 || response.status === 201)
@@ -109,16 +105,11 @@ export default class ConnectionManager {
     return null;
   };
 
-  editUsuario = async (
-    _id,
-    user,
-    password,
-    name
-  ) => {
+  editUsuario = async (_id, user, password, name) => {
     let response = await this.baseRequest.put(`/usuario/${_id}`, {
     user,
     password,
-    name
+    name,
     });
 
     if (response.status === 200 || response.status === 201)
@@ -132,5 +123,16 @@ export default class ConnectionManager {
     if (response.status === 200 || response.status === 201) return "ok";
     return null;
   };
-}
+ 
+  login1 = async ({ user, pass }) => {
+    let response = await this.baseRequest.post(`/usuarios/login`, {
+      user,
+      pass,
+    });
 
+    console.log({ response });
+
+    if (response.status !== 200) return null;
+    return response.data;
+  };
+}

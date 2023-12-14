@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function HeaderComponent() {
   const navigate = useNavigate();
   const isAuth = localStorage.getItem("isAuth") === "true";
-  console.log({ isAuth });
   const logout = () => {
     localStorage.setItem("isAuth", false);
     navigate("/admin/login");
