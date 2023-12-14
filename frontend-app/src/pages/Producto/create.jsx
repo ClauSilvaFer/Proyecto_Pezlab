@@ -227,7 +227,7 @@ class CreateProductoPage extends React.Component {
                   </div>
                   <div className="form-group mt-4">
                     <label htmlFor="image">
-                      <h6>Imagen</h6>
+                      <h6>URL Imagen</h6>
                     </label>
                     <input
                       className="form-control"

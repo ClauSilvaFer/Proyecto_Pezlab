@@ -31,10 +31,19 @@ const updateUsuario = async (req, res) => {
   res.status(200).json();
 };
 
+const login = async (req, res) => {
+  var {user, pass} = req.body;
+  console.log ({ user, pass });
+
+  const user1 = await Usuario.where({user, password: pass});
+  res.status(200).json(user1);
+};
+
 module.exports = {
   createUsuario,
   getUsuario,
   deleteUsuario,
   getUsuarios,
   updateUsuario,
+  login,
 };

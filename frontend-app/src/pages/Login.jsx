@@ -1,30 +1,34 @@
 import { useState } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import { useNavigate } from "react-router-dom";
+import ConnectionManager from "../ConnectionManager";
 
 export default function Login() {
   const [{ user, pass }, setForm] = useState({ user: null, pass: null });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     if (!user){
-      setError('Ingrese usuario')
+      setError('Ingrese usuario');
     }
     if (!pass){
-      setError('Ingrese password')
+      setError('Ingrese password');
     }
     if (user && pass) {
-      if (
+      
+      const c = new ConnectionManager();
+      const isAuth = await c.login1({user, pass});
+      const isClaudia =
         user === process.env.REACT_APP_USER &&
         pass === process.env.REACT_APP_PASS
-      ) {
+        if (isAuth || isClaudia) {
         localStorage.setItem("isAuth", true);
         navigate("/admin/paginamedia");
         setError("")
       } else {
-        setError("usuario y password incorrecto")
+        setError("usuario y password incorrecto");
       }
 
     }
